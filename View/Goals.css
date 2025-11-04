@@ -1,0 +1,340 @@
+:root {
+  --sidebar-w: 280px;
+  --sidebar-collapsed-w: 72px;
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --surface: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: #0f1724;
+  background: var(--surface);
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  transition: all 0.2s ease;
+}
+
+/* GOALS CARD*/
+/* View/Goals.css - Styles for the Goals card */
+
+/* Minimal scoping to avoid conflicts */
+.goals-section {
+  margin: 20px 12px;
+}
+
+/* Card container */
+.goal-card,
+.goal-card * {
+  box-sizing: border-box;
+}
+
+.goal-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: #ffffff;
+  border-radius: 36px;
+  border: 3px solid rgba(0, 0, 0, 0.08);
+  padding: 26px 34px;
+  position: relative;
+  min-height: 130px;
+}
+
+/* close (X) button on top-right */
+.goal-card__close {
+  position: absolute;
+  right: 26px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2b6adf;
+  font-size: 22px;
+  line-height: 0;
+}
+.goal-card__close:focus {
+  outline: 3px solid rgba(43, 106, 223, 0.15);
+}
+
+/* left block with icon + meta */
+.goal-card__left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  min-width: 360px;
+}
+
+.goal-card__icon {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(83, 135, 246, 0.18),
+    rgba(83, 135, 246, 0.06)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #2b6adf;
+  box-shadow: inset 0 -6px 12px rgba(46, 95, 216, 0.06);
+}
+
+/* title + progress text */
+.goal-card__meta h2 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0b0b0b;
+  letter-spacing: -0.3px;
+}
+.goal-card__progress {
+  color: #9b9b9b;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.goal-card__progress strong {
+  font-weight: 600;
+  color: #9b9b9b;
+}
+
+/* label + dots row */
+.goal-card__labels {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.goal-card__labels .label {
+  color: #9b9b9b;
+  font-size: 14px;
+}
+
+/* dots styles (small circular indicators) */
+.dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.dots--small {
+  gap: 10px;
+}
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2b6adf;
+  display: block;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* spacer to push right section to the edge */
+.goal-card__spacer {
+  flex: 1;
+}
+
+/* right column */
+.goal-card__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 200px;
+}
+.goal-card__right .label {
+  color: #9b9b9b;
+  font-size: 14px;
+  margin-top: 38px;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 860px) {
+  .goal-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+    gap: 16px;
+    min-height: auto;
+  }
+  .goal-card__left {
+    min-width: unset;
+    gap: 14px;
+  }
+  .goal-card__right {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .goal-card__spacer {
+    display: none;
+  }
+  .goal-card__close {
+    right: 14px;
+    top: 12px;
+  }
+}
+
+/* High contrast fallback */
+@media (prefers-contrast: more) {
+  .goal-card {
+    border-color: #999;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--bg);
+  border-right: 1px solid #e6edf5;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: width 0.22s ease, padding 0.22s ease;
+}
+
+body.collapsed .sidebar {
+  width: var(--sidebar-collapsed-w);
+  padding: 18px 12px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 140px;
+  height: auto;
+  display: block;
+  transition: width 0.22s ease;
+}
+
+body.collapsed .logo img {
+  width: 44px;
+}
+
+/* Toggle button (inside sidebar, top-right)*/
+.toggle {
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle .iconify {
+  font-size: 20px;
+  color: var(--muted);
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+
+.menu-item:hover {
+  background: #f5f7fb;
+  color: var(--accent);
+}
+
+.menu-item .iconify {
+  font-size: 20px;
+  color: var(--accent);
+  min-width: 26px;
+  text-align: center;
+}
+
+.menu-item .label {
+  white-space: nowrap;
+}
+
+.menu-item.active {
+  background: #eef6ff;
+  color: var(--accent);
+}
+
+/* Hide labels when collapsed */
+body.collapsed .menu-item .label {
+  display: none;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 28px 36px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #153564;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 30;
+    transform: translateX(-110%);
+    box-shadow: 0 6px 30px rgba(2, 6, 23, 0.12);
+  }
+
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* show a smaller content overlay when sidebar open */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.36);
+    z-index: 20;
+    opacity: 1;
+  }
+}

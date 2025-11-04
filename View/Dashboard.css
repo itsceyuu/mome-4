@@ -1,0 +1,168 @@
+:root {
+            --sidebar-w: 280px;
+            --sidebar-collapsed-w: 72px;
+            --accent: #2563eb;
+            --muted: #6b7280;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            color: #0f1724;
+            background: var(--surface)
+        }
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+            transition: all .2s ease
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--bg);
+            border-right: 1px solid #e6edf5;
+            padding: 28px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transition: width .22s ease, padding .22s ease;
+        }
+
+        body.collapsed .sidebar {
+            width: var(--sidebar-collapsed-w);
+            padding: 18px 12px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .logo img {
+            width: 140px;
+            height: auto;
+            display: block;
+            transition: width .22s ease
+        }
+
+        body.collapsed .logo img {
+            width: 44px
+        }
+
+        /* Toggle button (inside sidebar, top-right)*/
+        .toggle {
+            margin-left: auto;
+            background: transparent;
+            border: 0;
+            padding: 6px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle .iconify {
+            font-size: 20px;
+            color: var(--muted)
+        }
+
+        /* Menu */
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 6px
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 10px;
+            color: var(--muted);
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .12s, color .12s;
+        }
+
+        .menu-item:hover {
+            background: #f5f7fb;
+            color: var(--accent)
+        }
+
+        .menu-item .iconify {
+            font-size: 20px;
+            color: var(--accent);
+            min-width: 26px;
+            text-align: center
+        }
+
+        .menu-item .label {
+            white-space: nowrap
+        }
+
+        .menu-item.active {
+            background: #eef6ff;
+            color: var(--accent)
+        }
+
+        /* Hide labels when collapsed */
+        body.collapsed .menu-item .label {
+            display: none
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 28px 36px
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: 700
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width:860px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 30;
+                transform: translateX(-110%);
+                box-shadow: 0 6px 30px rgba(2, 6, 23, 0.12)
+            }
+
+            body.sidebar-open .sidebar {
+                transform: translateX(0)
+            }
+
+            /* show a smaller content overlay when sidebar open */
+            .overlay {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.36);
+                z-index: 20;
+                opacity: 1
+            }
+        }

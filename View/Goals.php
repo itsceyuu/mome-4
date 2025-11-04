@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (!isset($activePage))
     $activePage = 'dashboard';
 if (!isset($activeTitle))
@@ -12,7 +12,7 @@ if (!isset($pageContent3))
     $pageContent3 = '<p> closer to your goal. </p>';
 
 
-$BASE = '/MOME';
+$BASE = '/mome-4';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +34,9 @@ $BASE = '/MOME';
 
     <div class="app" id="app">
         <aside id="sidebar" class="sidebar" role="navigation" aria-label="Sidebar">
-            <div style="display:flex;align-utems:center;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
                 <div class="logo" aria-hidden="false">
-                    <img src="<?= $BASE ?>/images/LOGO.png" alt="Mome Logo">
+                    <img src="<?= $BASE ?>/Images/LOGO.png" alt="Mome Logo">
                 </div>
 
                 <!-- toggle desktop -->

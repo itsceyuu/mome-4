@@ -9,10 +9,10 @@ class Model {
         $port = 3306;
         $user = 'root';
         $pass = '';
-        $dbname = 'mome'; // ganti dengan nama database kamu
+        $dbname = 'MOME'; 
 
         //pake SQL
-        $this->db = new mysqli($host, $port, $user, $pass, $dbname);
+        $this->db = new mysqli($host, $user, $pass, $dbname, $port);
 
         //Cek koneksi
         if ($this->db->connect_error) {

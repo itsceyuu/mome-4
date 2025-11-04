@@ -1,4 +1,5 @@
 <?php
+session_start();
 // template.php
 // Template sidebar collapsible — menggunakan Iconify + logo image
 // Usage: set $activePage, $pageTitle, capture $pageContent with ob_start(), then include this file.
@@ -18,7 +19,7 @@ if (!isset($pageContent))
     $pageContent = '<p>Kontennya belum ada kaka</p>';
 
 // sesuaikan BASE jika foldermu punya nama lain (contoh '/MOME' atau '/mome')
-$BASE = '/MOME';
+$BASE = '/mome-4';
 ?>
 <!doctype html>
 <html lang="id">
@@ -31,7 +32,7 @@ $BASE = '/MOME';
     <!-- Iconify CDN -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <!-- CSS -->
-     <link rel="stylesheet" href="<?= $BASE ?>/View/Dashboard.css">
+    <link rel="stylesheet" href="<?= $BASE ?>/View/Dashboard.css">
 </head>
 
 <body>

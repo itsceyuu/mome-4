@@ -2,7 +2,7 @@
 
 class Controller {
     function model($modelName) {
-        require_once "./model/{$modelName}.class.php";
+        require_once "./Model/{$modelName}.class.php";
         return new $modelName;
     }
 

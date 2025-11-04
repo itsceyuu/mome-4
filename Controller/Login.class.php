@@ -20,9 +20,9 @@ class Login extends Controller {
 
         if ($status === "valid") {
             // Jika login berhasil → tampilkan homepage
-            session_start();
+            // session_start();
             $_SESSION['username'] = $username;
-            $this->view('Homepage.php', ['username' => $username]);
+            $this->view('Dashboard.php', ['username' => $username]);
         } else {
             // Jika gagal → tampilkan pesan error di halaman login
             $this->view('Login.php', ['error' => 'Invalid username or password']);
@@ -32,6 +32,7 @@ class Login extends Controller {
     // Alur alternatif: pengguna belum punya akun
     public function arahkanKeRegistrasi() {
         header('Location: index.php?c=Register&m=index');
-        exit;
+    exit;
     }
 }
+

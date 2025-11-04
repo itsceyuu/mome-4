@@ -26,12 +26,7 @@
           </div>
         <?php endif; ?>
 
-        <form method="POST" action="index.php?c=Register&m=save">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
-          </div>
-
+        <form method="POST" action="index.php?c=Register&m=proses">
           <div class="mb-3">
             <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
             <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>

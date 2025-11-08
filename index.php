@@ -3,10 +3,10 @@
     $c = $_GET['c'] ?? 'Login';
     $m = $_GET['m'] ?? 'index';
     
-    require_once("controller/Controller.class.php");
+    require_once("Controller/Controller.class.php");
 
     // Cek controller
-    $path = "controller/$c.class.php";
+    $path = "Controller/$c.class.php";
     if (!file_exists($path)) {
         die("Controller '$c' tidak ditemukan!");
     }

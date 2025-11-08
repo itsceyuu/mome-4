@@ -15,7 +15,7 @@
     <div class="left-side d-none d-md-block"></div>
 
     <div class="right-side d-flex flex-column justify-content-center align-items-center text-center px-4">
-      <img src="Images/Logo.png" class="img-fluid mb-3" style="max-width: 170px;">
+      <img src="Images/LOGO.png" class="img-fluid mb-3" style="max-width: 170px;">
 
       <?php if(isset($_GET['error'])): ?>
         <div class="alert alert-danger w-100 text-center" role="alert">

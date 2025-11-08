@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Session sudah di-start di Controller
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($activePage))
     $activePage = 'dashboard';
 if (!isset($activeTitle))
@@ -26,7 +29,7 @@ $BASE = '/mome-4';
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?= $BASE ?>/View/Goals.css">
+    <link rel="stylesheet" href="View/Goals.css">
 </head>
 
 <body>

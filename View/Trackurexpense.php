@@ -115,7 +115,7 @@ if (!isset($pageContent2))
             <strong>Important</strong>
             <p>In order to give you detailed about your monthly financial expenses,
             you can also now look at your monthly recaps! Go seek it now!
-            <a href="?page=recap">Take me There!</a></p>
+            <a href="index.php?c=RecapController&m=index">Take me There!</a></p>
         </div>
     </div>
 </div>
@@ -289,7 +289,7 @@ $BASE = '/mome-4';
         <aside id="sidebar" class="sidebar" role="navigation" aria-label="Sidebar">
             <div style="display:flex;align-items:center;gap:8px">
                 <div class="logo" aria-hidden="false">
-                    <img src="<?= $BASE ?>/images/LOGO.png" alt="Mome Logo">
+                    <img src="/Images/LOGO.png" alt="Mome Logo">
                 </div>
 
                 <!-- toggle desktop -->
@@ -311,18 +311,9 @@ $BASE = '/mome-4';
 
                 foreach ($menuItems as $item):
                     $isActive = ($activePage == $item['id']) ? 'active' : '';
-                    // Routing sesuai dengan MVC pattern
-                    $menuRoutes = [
-                        'dashboard' => 'index.php?c=Dashboard&m=index',
-                        'expenses' => 'index.php?c=ExpenseController&m=index',
-                        'recap' => 'index.php?c=Recap&m=index',
-                        'goals' => 'index.php?c=Goals&m=index',
-                        'wishlist' => 'index.php?c=Wishlist&m=index',
-                        'articles' => 'index.php?c=Articles&m=index'
-                    ];
-                    $menuUrl = $menuRoutes[$item['id']] ?? 'index.php?c=Dashboard&m=index';
                     ?>
-                    <a href="<?= $menuUrl ?>" class="menu-item <?= $isActive ?>" role="menuitem">
+                    <a href="index.php?c=Dashboard&m=navigate&menu=<?= urlencode($item['id']) ?>" 
+                        class="menu-item <?= $isActive ?>" role="menuitem">
                         <span class="iconify" data-icon="<?= $item['icon'] ?>" aria-hidden="true"></span>
                         <span class="label"><?= htmlspecialchars($item['label']) ?></span>
                     </a>

@@ -41,7 +41,7 @@ if (isset($_SERVER['SCRIPT_NAME'])) {
         <aside id="sidebar" class="sidebar" role="navigation" aria-label="Sidebar">
             <div style="display:flex;align-items:center;gap:8px">
                 <div class="logo">
-                    <img src="<?= $BASE ?>/Images/LOGO.png" alt="Mome Logo" />
+                    <img src="/Images/LOGO.png" alt="Mome Logo" />
                 </div>
                 <button id="toggleBtn" class="toggle" aria-expanded="true" aria-label="Toggle sidebar">
                     <span class="iconify" data-icon="mdi:chevron-left"></span>

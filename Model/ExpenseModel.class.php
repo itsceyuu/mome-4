@@ -145,4 +145,38 @@ class ExpenseModel extends Model {
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
+
+    // 🔹 Ambil total income & expense keseluruhan user (untuk halaman Recap)
+    public function getTotalSummary($userId) {
+        $stmt = $this->db->prepare("
+            SELECT 
+                COALESCE(SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END), 0) AS total_income,
+                COALESCE(SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END), 0) AS total_expense
+            FROM transactions
+            WHERE user_id = ?
+        ");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
+
+    // 🔹 Ambil total income & expense per bulan (buat recap bulanan)
+    public function getMonthlySummary($userId) {
+        $stmt = $this->db->prepare("
+            SELECT 
+                DATE_FORMAT(date, '%Y-%m') AS month,
+                COALESCE(SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END), 0) AS total_income,
+                COALESCE(SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END), 0) AS total_expense
+            FROM transactions
+            WHERE user_id = ?
+            GROUP BY DATE_FORMAT(date, '%Y-%m')
+            ORDER BY month ASC
+        ");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
+
+

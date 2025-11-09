@@ -1,35 +1,17 @@
 <?php
+require_once "Controller.class.php";
 
 class Login extends Controller {
 
-    // Langkah 1 & 2: tampilkan form login
+    // Tampilkan form login
     public function index() {
+        // Selalu tampilkan halaman login
         $this->view('Login.php');
     }
 
-    // Langkah 3, 4, 5: verifikasi data login
-    // public function verifikasiData() {
-    //     $username = $_POST['username'] ?? '';
-    //     $password = $_POST['password'] ?? '';
-
-    //     // Panggil model AkunKlien
-    //     $akun = $this->model('AkunKlien');
-
-    //     // Cek data login di database
-    //     $status = $akun->cekData($username, $password);
-
-    //     if ($status === "valid") {
-    //         // Jika login berhasil → tampilkan homepage
-    //         // session_start();
-    //         $_SESSION['username'] = $username;
-    //         $this->view('Dashboard.php', ['username' => $username]);
-    //     } else {
-    //         // Jika gagal → tampilkan pesan error di halaman login
-    //         $this->view('Login.php', ['error' => 'Invalid username or password']);
-    //     }
-    // }
+    // Verifikasi data login
     public function verifikasiData() {
-        $this->startSession(); // menggunakan helper method (OOP)
+        $this->startSession();
         
         // Pastikan method adalah POST
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -37,10 +19,10 @@ class Login extends Controller {
             exit;
         }
         
-        $username = $_POST['username'] ?? '';
+        $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
 
-        // Validasi input
+        // Validasi input sederhana
         if (empty($username) || empty($password)) {
             header("Location: index.php?c=Login&m=index&error=1");
             exit;
@@ -53,7 +35,7 @@ class Login extends Controller {
             if ($user && is_array($user)) {
                 // Login berhasil
                 $_SESSION['id'] = $user['id']; 
-                $_SESSION['idKlien'] = $user['id']; // Untuk kompatibilitas dengan Dashboard
+                $_SESSION['idKlien'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'] ?? '';
                 $_SESSION['role'] = $user['role'] ?? 'client';
@@ -73,95 +55,34 @@ class Login extends Controller {
         }
     }
 
-    // Alur alternatif: pengguna belum punya akun
+    // Redirect ke registrasi
     public function arahkanKeRegistrasi() {
         header('Location: index.php?c=Register&m=index');
-    exit;
+        exit;
+    }
+
+    // Logout - clear session
+    public function logout() {
+        $this->startSession();
+        
+        // Hapus semua session
+        $_SESSION = array();
+        
+        // Hapus session cookie
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        
+        // Destroy session
+        session_destroy();
+        
+        // Redirect ke login
+        header('Location: index.php?c=Login&m=index');
+        exit;
     }
 }
-// class Login extends Controller {
-
-//     // Langkah 1 & 2: tampilkan form login
-//     public function index() {
-//         $this->view('Login.php');
-//     }
-
-//     // Langkah 3, 4, 5: verifikasi data login
-//     public function verifikasiData() {
-        // $username = $_POST['username'] ?? '';
-        // $password = $_POST['password'] ?? '';
-
-        // // Panggil model AkunKlien
-        // $akun = $this->model('AkunKlien');
-
-        // Cek data login di database
-        // $status = $akun->cekData($username, $password);
-        // echo "Status login: $status<br>";
-        // if ($status === "valid") {
-        //     // Jika login berhasil → tampilkan homepage
-        //     session_start();
-        //     $_SESSION['username'] = $username;
-        //     $this->view('Dashboard.php', ['username' => $username]);
-        // } else {
-        //     // Jika gagal → tampilkan pesan error di halaman login
-        //     $this->view('Login.php', ['error' => 'Invalid username or password']);
-        // }
-        // if ($status === "valid") {
-        //     session_start();
-        //     $_SESSION['username'] = $username;
-        //     header("Location: index.php?c=Dashboard&m=index");
-        //     exit;
-        // } else {
-        //     $this->view('Login.php', ['error' => 'Invalid username or password']);
-        // }
-
-    //     $user = $akun->cekData($username, $password);
-
-    //     // Jika login berhasil
-    //     if ($user !== null) {
-    //         session_start();
-    //         $_SESSION['id'] = $user['id'];
-    //         $_SESSION['username'] = $user['username'];
-    //         $_SESSION['role'] = $user['role'];
-
-    //         // ✅ Redirect ke Dashboard controller method index
-    //         header("Location: index.php?c=Dashboard&m=index");
-    //         exit;
-    //     } else {
-    //         // Jika gagal login, tampilkan error
-    //         $this->view('Login.php', ['error' => 'Invalid username or password']);
-    //     }
-    // }
-
-    // // Alur alternatif: pengguna belum punya akun
-    // public function arahkanKeRegistrasi() {
-    //     header('Location: index.php?c=Register&m=index');
-    //     exit;
-        // Langkah 3, 4, 5: verifikasi data login
-    //     $username = $_POST['username'] ?? '';
-    //     $password = $_POST['password'] ?? '';
-
-    //     // Panggil model AkunKlien
-    //     $akun = $this->model('AkunKlien');
-
-    //     // Cek data login di database
-    //     $status = $akun->cekData($username, $password);
-
-    //     if ($status === "valid") {
-    //         // Jika login berhasil → tampilkan homepage
-    //         // session_start();
-    //         $_SESSION['username'] = $username;
-    //         $this->view('Dashboard.php', ['username' => $username]);
-    //     } else {
-    //         // Jika gagal → tampilkan pesan error di halaman login
-    //         $this->view('Login.php', ['error' => 'Invalid username or password']);
-    //     }
-    // }
-
-    // Alur alternatif: pengguna belum punya akun
-//     public function arahkanKeRegistrasi() {
-//         header('Location: index.php?c=Register&m=index');
-//     exit;
-//     }
-// }
 

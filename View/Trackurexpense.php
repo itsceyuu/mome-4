@@ -77,11 +77,11 @@ if (empty($transactions)) {
         $formattedAmount = number_format($transaction['amount'], 2, ',', '.');
         $formattedDate = date('d/m/Y', strtotime($transaction['date']));
         $description = $transaction['description'] ?: '-';
-        
+
         // Escape untuk JavaScript
         $titleJS = htmlspecialchars($transaction['title'], ENT_QUOTES);
         $descJS = htmlspecialchars($transaction['description'] ?? '', ENT_QUOTES);
-        
+
         $pageContent1 .= '
             <tr>
                 <td>' . htmlspecialchars($transaction['title']) . '</td>
@@ -289,7 +289,7 @@ $BASE = '/mome-4';
         <aside id="sidebar" class="sidebar" role="navigation" aria-label="Sidebar">
             <div style="display:flex;align-items:center;gap:8px">
                 <div class="logo" aria-hidden="false">
-                    <img src="/Images/LOGO.png" alt="Mome Logo">
+                    <img src="<?= $BASE ?>/Images/LOGO.png" alt="Mome Logo">
                 </div>
 
                 <!-- toggle desktop -->
@@ -311,8 +311,8 @@ $BASE = '/mome-4';
 
                 foreach ($menuItems as $item):
                     $isActive = ($activePage == $item['id']) ? 'active' : '';
-                    ?>
-                    <a href="index.php?c=Dashboard&m=navigate&menu=<?= urlencode($item['id']) ?>" 
+                ?>
+                    <a href="index.php?c=Dashboard&m=navigate&menu=<?= urlencode($item['id']) ?>"
                         class="menu-item <?= $isActive ?>" role="menuitem">
                         <span class="iconify" data-icon="<?= $item['icon'] ?>" aria-hidden="true"></span>
                         <span class="label"><?= htmlspecialchars($item['label']) ?></span>
@@ -351,7 +351,7 @@ $BASE = '/mome-4';
         </main>
     </div>
     <script>
-        (function () {
+        (function() {
             const body = document.body;
             const toggleBtn = document.getElementById('toggleBtn');
             const overlay = document.getElementById('overlay');
@@ -364,7 +364,7 @@ $BASE = '/mome-4';
             body.classList.add('collapsed');
 
             // Nonaktifkan fungsi toggle button (klik tidak akan mengubah apapun)
-            toggleBtn.addEventListener('click', function (e) {
+            toggleBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
@@ -393,7 +393,7 @@ $BASE = '/mome-4';
             updateToggleVisibility();
 
             // Saat mouse masuk sidebar: jika collapsed dan bukan mobile, buka sementara + tampilkan toggle
-            sidebar.addEventListener('mouseenter', function () {
+            sidebar.addEventListener('mouseenter', function() {
                 if (body.classList.contains('collapsed') && !isMobile()) {
                     body.classList.remove('collapsed');
                     hoverOpened = true;
@@ -402,7 +402,7 @@ $BASE = '/mome-4';
             });
 
             // Saat mouse keluar sidebar: jika dibuka oleh hover, kembalikan collapsed + sembunyikan toggle
-            sidebar.addEventListener('mouseleave', function () {
+            sidebar.addEventListener('mouseleave', function() {
                 if (hoverOpened && !isMobile()) {
                     body.classList.add('collapsed');
                     hoverOpened = false;
@@ -426,18 +426,18 @@ $BASE = '/mome-4';
             updateMobileButtons();
             window.addEventListener('resize', updateMobileButtons);
 
-            mobileMenuBtn.addEventListener('click', function () {
+            mobileMenuBtn.addEventListener('click', function() {
                 body.classList.add('sidebar-open');
                 overlay.style.display = 'block';
                 overlay.setAttribute('aria-hidden', 'false');
             });
 
-            overlay.addEventListener('click', function () {
+            overlay.addEventListener('click', function() {
                 body.classList.remove('sidebar-open');
                 overlay.style.display = 'none';
             });
 
-            window.addEventListener('keydown', function (e) {
+            window.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && body.classList.contains('sidebar-open')) {
                     body.classList.remove('sidebar-open');
                     overlay.style.display = 'none';
@@ -446,4 +446,5 @@ $BASE = '/mome-4';
         })();
     </script>
 </body>
+
 </html>

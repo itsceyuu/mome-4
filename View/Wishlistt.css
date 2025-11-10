@@ -1,0 +1,293 @@
+/* ===================== FIRST PAGE ===================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9fb;
+    margin: 0;
+    padding: 0;
+}
+
+.wishlist-container {
+    padding: 40px 60px;
+}
+
+.wishlist-header h2 {
+    color: #153564;
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.wishlist-header p {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.wishlist-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.wishlist-table th {
+    background-color: #2C6ECF;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 18px;
+    
+}
+
+.wishlist-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.actions {
+    display: flex;
+    gap: 8px; 
+}
+
+/* EDIT & DELETE BUTTON */
+.edit-btn, .delete-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background-color: #A6CAFF;
+    color: #ffffff;
+}
+
+.edit-btn:hover {
+    background-color: #57649a;
+}
+
+.delete-btn {
+    background-color: #C63C00;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #881818;
+}
+
+.add-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2C6ECF;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #1f55a5;
+    transform: scale(1.1);
+}
+
+.wishlist-table table td {
+    max-width: 500px; /* batasi lebar kolom */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wishlist-table table tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.wishlist-table table tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* ===================== POPUP STYLING ===================== */
+.popup-overlay {
+  display: none; /* awalnya tersembunyi */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  margin-top: 30px;
+}
+
+.popup-box {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 30px 20px 40px;
+  width: 380px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  animation: fadeSlideIn 0.3s ease;
+}
+
+/*.popup-actions {
+  margin-top: 25px;
+  text-align: right;
+}*/
+
+/* ===================== ADD POPUP ===================== */
+#popupAdd .popup-box {
+  background-color: #fefefe;
+  border-radius: 16px;
+  padding: 30px 45px 150px;
+  width: 420px;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+#popupAdd h3 {
+  color: #153564;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#popupAdd .popup-input,
+#popupAdd .popup-textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+
+#popupAdd .popup-input:focus,
+#popupAdd .popup-textarea:focus {
+  border-color: #2C6ECF;
+}
+
+/* ===================== DELETE POPUP ===================== */
+.popup-content h3 {
+  color: #153564;
+  font-size: 20px;
+  margin-bottom: 1px;
+  margin-top: 35px;
+  letter-spacing: 0.5px;
+}
+
+.popup-icon {
+  font-size: 100px;
+  padding-bottom: 40px;
+}
+
+/* ===================== EDIT POPUP ===================== */
+#popupEdit .popup-box {
+  background-color: #fefefe;
+  border-radius: 16px;
+  padding: 30px 45px 150px;
+  width: 420px;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+#popupEdit h3 {
+  color: #153564;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#popupEdit .popup-input,
+#popupEdit .popup-textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+
+#popupEdit .popup-input:focus,
+#popupEdit .popup-textarea:focus {
+  border-color: #40c6a7;
+}
+
+
+/* ===================== TULISAN * ===================== */
+.popup-label {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.required {
+  color: red;
+  margin-left: 2px;
+}
+
+
+/* ===================== CLOSE BUTTON ===================== */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ee0c0c;
+}
+
+/* ===================== CONFIRM BUTTON ===================== */
+.confirm-btn {
+  background-color: #1dffca;
+  color: #2C6ECF;
+  border: none;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.confirm-btn:hover {
+  background-color: #40c6a7;
+}

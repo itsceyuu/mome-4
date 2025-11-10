@@ -1,9 +1,11 @@
 <?php
 require_once "Controller.class.php";
 
-class Dashboard extends Controller {
+class Dashboard extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $this->startSession();
 
         if (!isset($_SESSION['idKlien'])) {
@@ -23,15 +25,16 @@ class Dashboard extends Controller {
         include("./View/Dashboard.php");
     }
 
-    public function navigate($menu = null) {
+    public function navigate($menu = null)
+    {
         $this->startSession();
-        
+
         // Pastikan user sudah login
         if (!isset($_SESSION['idKlien'])) {
             header("Location: index.php?c=Login&m=index");
             exit;
         }
-        
+
         if ($menu === null && isset($_GET['menu'])) {
             $menu = $_GET['menu'];
         }
@@ -44,7 +47,7 @@ class Dashboard extends Controller {
                 header('Location: index.php?c=ExpenseController&m=index');
                 exit;
             case 'goals':
-                header('Location: index.php?c=Goals&m=index');
+                header('Location: index.php?c=GoalsController&m=index');
                 exit;
             case 'wishlist':
                 header('Location: index.php?c=Wishlist&m=index');
@@ -61,4 +64,3 @@ class Dashboard extends Controller {
         }
     }
 }
-?>

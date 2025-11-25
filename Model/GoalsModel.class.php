@@ -28,7 +28,7 @@ class GoalsModel extends Model
     // READ - semua goals milik user tertentu
     public function getGoalsByUser($user_id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM saving_targets WHERE user_id = ? ORDER BY created_at DESC");
+        $stmt = $this->db->prepare("SELECT * FROM mome.saving_targets WHERE user_id = ? ORDER BY created_at DESC");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();

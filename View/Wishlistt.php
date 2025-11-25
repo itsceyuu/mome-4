@@ -30,6 +30,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Mome - Wishlist</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Wishlistt.css">
 </head>
 <body>

@@ -31,6 +31,8 @@ if (isset($_SERVER['SCRIPT_NAME'])) {
 
     <!-- Iconify CDN -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <!-- CSS -->
     <link rel="stylesheet" href="<?= $BASE ?>/View/Dashboard.css">
 </head>
@@ -65,18 +67,13 @@ if (isset($_SERVER['SCRIPT_NAME'])) {
                     $isActive = ($activePage === $item['id']) ? 'active' : '';
                 ?>
                     <a href="index.php?c=Dashboard&m=navigate&menu=<?= urlencode($item['id']) ?>" 
-                       class="menu-item <?= $isActive ?>" role="menuitem">
+                        class="menu-item <?= $isActive ?>" role="menuitem">
                         <span class="iconify" data-icon="<?= $item['icon'] ?>" aria-hidden="true"></span>
                         <span class="label"><?= htmlspecialchars($item['label']) ?></span>
                     </a>
                 <?php endforeach; ?>
             </nav>
         </aside>
-
-        <!-- FAB -->
-        <div class="fab" title="Track Your Expenses">
-            <span class="iconify" data-icon="mdi:plus"></span>
-        </div>
 
         <!-- MAIN CONTENT -->
         <main class="content" role="main">
@@ -158,7 +155,7 @@ if (isset($_SERVER['SCRIPT_NAME'])) {
                                         </div>
                                     </div>
                                     <div class="goal-right">
-                                        <p style="color:#6b7280;font-weight:500;font-size:14px;margin-bottom:4px;">Target Amount</p>
+                                        <p style="color:#6b7280;font-weight:500;font-size:14px;font-style:italic; margin-bottom:4px;">Target Amount</p>
                                         <div class="progress-dots">
                                             <div class="dot active"></div>
                                             <div class="dot active"></div>

@@ -126,7 +126,7 @@ MOME-4
 ├── Images/            # Assets for MOME
 └── uploads/           # Article Photos
     └── articles/
-```gi
+```
 
 ## 🔧 Prerequisites
 

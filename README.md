@@ -4,6 +4,13 @@
 This system is built using **PHP (MVC)** with a **MySQL** database and includes complete features for expense monitoring, financial planning, wishlist tracking, and financial education articles.
 
 ---
+# 👥 Group Members 6
+1. Grace Wahyuni - 245150401111029 
+2. Chita Arthalina Sianturi - 245150407111057
+3. A. Muh. Abduh Dzaky - 245150407111039 
+4. Zaky Ahmady Santoso - 245150407111048 
+5. Muhammad Rifa Aqilla - 245150407111047
+
 
 ## 🚀 Main Features
 

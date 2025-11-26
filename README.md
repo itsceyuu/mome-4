@@ -115,15 +115,18 @@ Contains articles to increase users' financial literacy.
 ---
 ## Project Structures
 
+# MOME-4
+```
 MOME-4
-│── index.php       # Web Routes
-├── Controller/     # PHP controllers
-├── Model/          # Eloquent models
-├── View/           # Mome's UI
-├── Databases/      # Database schema
-├── Images/         # Assets for MOME
-└── uploads/        # Article Photos
+├── index.php          # Web Routes
+├── Controller/        # PHP controllers
+├── Model/             # Eloquent models
+├── View/              # Mome's UI
+├── Databases/         # Database schema
+├── Images/            # Assets for MOME
+└── uploads/           # Article Photos
     └── articles/
+```gi
 
 ## 🔧 Prerequisites
 
